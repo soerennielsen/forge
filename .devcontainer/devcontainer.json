@@ -35,5 +35,5 @@
       }
     }
   },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y fzf fd-find && npm i -g forgecode && rustup component add clippy rustfmt && cargo install cargo-insta && cargo install cargo-nextest && cargo install ast-grep && chsh -s /usr/bin/zsh"
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y fzf fd-find unzip && curl -sLO https://github.com/protocolbuffers/protobuf/releases/download/v25.1/protoc-25.1-linux-$(uname -m | sed 's/aarch64/aarch_64/; s/x86_64/x86_64/').zip && sudo unzip -o protoc-25.1-linux-*.zip -d /usr/local && rm protoc-25.1-linux-*.zip && npm i -g forgecode && rustup component add clippy rustfmt && cargo install cargo-insta && cargo install --locked cargo-nextest && cargo install ast-grep && sudo chsh -s /usr/bin/zsh"
 }
