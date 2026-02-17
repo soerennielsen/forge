@@ -18,7 +18,6 @@ strip = true
 anyhow = "1.0.101"
 async-recursion = "1.1.1"
 async-trait = "0.1.89"
-aws-config = { version = "1.8.13", features = ["behavior-version-latest"], default-features = false }
 aws-sdk-bedrockruntime = { version = "1.124.0", features = ["behavior-version-latest"], default-features = false }
 aws-credential-types = "1.2.11"
 aws-smithy-types = "1.4.3"
@@ -39,7 +38,6 @@ crossterm = "0.29.0"
 derive_more = { version = "2.1.1", features = ["from", "display", "debug", "deref", "as_ref"] }
 derive_setters = "0.1.9"
 dirs = "6.0.0"
-dissimilar = "1.0.9"
 dotenvy = "0.15.7"
 futures = "0.3.31"
 gh-workflow = "0.8.1"
@@ -59,7 +57,6 @@ machineid-rs = "1.2.4"
 mockito = "1.7.2"
 nom = "8.0.0"
 nu-ansi-term = "0.50.1"
-posthog-rs = { git = "https://github.com/PostHog/posthog-rs.git", rev = "a006a81419031e4889d9c3882d7458d2efa588a8" }
 pretty_assertions = "1.4.1"
 proc-macro2 = "1.0"
 quote = "1.0"
@@ -101,14 +98,12 @@ tokio = { version = "1.49.0", features = [
     "io-util",
 ] }
 tokio-stream = "0.1.18"
-tokio-util = "0.7"
 tonic = { version = "0.14.3", features = ["tls-webpki-roots"] }
 tracing = "0.1.44"
 tracing-appender = "0.2.3"
 tracing-subscriber = { version = "0.3.20", features = ["env-filter", "json"] }
 url = { version = "2.5.8", features = ["serde"] }
 backon = "1.5.2"
-eserde = "0.1.7"
 uuid = { version = "1.20.0", features = [
     "v4",
     "fast-rng",
@@ -135,13 +130,11 @@ google-cloud-auth = "1.5.0" # Google Cloud authentication with automatic token r
 # Internal crates
 forge_api = { path = "crates/forge_api" }
 forge_app = { path = "crates/forge_app" }
-forge_ci = { path = "crates/forge_ci" }
 forge_display = { path = "crates/forge_display" }
 forge_domain = { path = "crates/forge_domain" }
 forge_fs = { path = "crates/forge_fs" }
 forge_infra = { path = "crates/forge_infra" }
 forge_repo = { path = "crates/forge_repo" }
-forge_main = { path = "crates/forge_main" }
 forge_services = { path = "crates/forge_services" }
 forge_snaps = { path = "crates/forge_snaps" }
 forge_spinner = { path = "crates/forge_spinner" }
@@ -155,3 +148,8 @@ forge_select = { path = "crates/forge_select" }
 forge_test_kit = { path = "crates/forge_test_kit" }
 
 forge_markdown_stream = { path = "crates/forge_markdown_stream" }
+
+# Patches to enable Windows VT input and bracketed paste support
+# See: https://github.com/crossterm-rs/crossterm/pull/870
+[patch.crates-io]
+crossterm = { git = "https://github.com/eitsupi/crossterm", branch = "feature/windows-vt-input" }
